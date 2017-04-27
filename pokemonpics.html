@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pokemon Pics</title>
+        <!--<link rel="stylesheet" type="text/css" href="users.css" />-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+           
+            function drawPic(picarray,i){
+                $('#wrapper').append(picarray[i]);
+            }
+
+            $(document).ready(function(){
+
+                // initialize array of pictures
+                var picarray = [];
+                var nth = "";
+                // starting at pokemon 1 and going to 151
+                // add images of these pokemon to picarray
+                for(var i = 1; i <= 151; i++){
+                    nth = "pokemon #"+i;
+                    picarray.push(makepic(i,nth));
+                }
+                // creates & returns Img with src from 
+                // pokeapi page with given "i" and "title"
+                function makepic(i,title){
+                    var pic = new Image();
+                    pic.src = "http://pokeapi.co/media/img/"+i+".png";
+                    console.log(pic.src);
+                    pic.alt = title;
+                    pic.title = title;
+                    return pic;
+                }
+
+                console.log(picarray);
+                // loops through picarray and calls drawPic()
+                for (var i = 1; i <= 151; i++){
+                    drawPic(picarray,i);
+                }
+
+            });
+        </script>
+    </head>
+        <body>
+        <div id="wrapper">
+            
+        </div> <!--end of wrapper-->
+        <style>
+            #wrapper{
+                background: lightblue;
+                width: 870px;
+                height: 2750px;
+                margin: 0 auto;
+                padding: 20px;
+                border-radius: 10px;
+            }
+        </style>
+    </body>
+</html>
